@@ -6,6 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -14,6 +15,7 @@ import javax.persistence.Table;
 public class Product {
 	
 	@Id
+	@Column(name="product_id")
 	private int productId;  
 	
 	@Column(name="name")
@@ -32,7 +34,7 @@ public class Product {
 	private Date date;
 	
 	@ManyToOne
-    @JoinColumn(name="product_category_id", nullable=false)
+	@JoinColumn(name="product_category_id" ,referencedColumnName = "product_category_id")
     private ProductCategory productCategory;
 
 	
@@ -83,14 +85,14 @@ public class Product {
 	public void setDate(Date date) {
 		this.date = date;
 	}
-//
-//	public ProductCategory getProductCategory() {
-//		return productCategory;
-//	}
-//
-//	public void setProductCategory(ProductCategory productCategory) {
-//		this.productCategory = productCategory;
-//	}
+
+	public ProductCategory getProductCategory() {
+		return productCategory;
+	}
+
+	public void setProductCategory(ProductCategory productCategory) {
+		this.productCategory = productCategory;
+	}
 	
 	
 

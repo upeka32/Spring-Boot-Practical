@@ -1,5 +1,7 @@
 package com.sample.practical.repository;
 
+import javax.transaction.Transactional;
+
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -10,8 +12,11 @@ import com.sample.practical.model.Product;
 
 public interface ProductRepository extends CrudRepository<Product, String>{
 	
-
-	@Query("DELETE from product where product_id=:id")
-	public Product deleteProduct(@Param(value="id") int id);
-
+	@Modifying
+	@Transactional
+	@Query("UPDATE Product SET status='D' WHERE product_id=:product_id")
+	public void deleteProductById(@Param(value="product_id") int productId);
+	
+	
+	
 }

@@ -1,8 +1,5 @@
 package com.sample.practical.serviceImpl;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,15 +14,11 @@ public class ProductServiceImpl implements ProductService{
 	@Autowired
 	ProductRepository productRepo;
 	
-	List<Product> productList = new ArrayList<Product>();
-	
 	public Iterable<Product> getAllProducts(){
-		System.out.println("get all products");
 		return productRepo.findAll();
 	}
 	
 	public Product addProduct(Product product){
-		System.out.println("product added");
 		return productRepo.save(product);
 	}
 	
@@ -35,8 +28,7 @@ public class ProductServiceImpl implements ProductService{
 	
 	public void deleteProduct(int id) {
 	
-		productRepo.deleteProduct(id);
-		System.out.println("delete service");
+		productRepo.deleteProductById(id);
 		
 	}
 	

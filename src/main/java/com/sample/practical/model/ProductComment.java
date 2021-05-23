@@ -14,6 +14,7 @@ import java.sql.Timestamp;
 public class ProductComment {
 	
 	@Id
+	@Column(name="product_comment_id")
 	private int commentId;
 	
 	@Column(name="comment")
@@ -23,8 +24,8 @@ public class ProductComment {
 	private Timestamp createdAt;
 
 	@ManyToOne
-    @JoinColumn(name="product_product_id", nullable=false)
-    private ProductCategory productCategory;
+    @JoinColumn(name="product_product_id", referencedColumnName = "product_id")
+    private Product productId;
 
 	public int getCommentId() {
 		return commentId;
@@ -50,12 +51,13 @@ public class ProductComment {
 		this.createdAt = createdAt;
 	}
 
-	public ProductCategory getProductCategory() {
-		return productCategory;
+	public Product getProductId() {
+		return productId;
 	}
 
-	public void setProductCategory(ProductCategory productCategory) {
-		this.productCategory = productCategory;
+	public void setProductId(Product productId) {
+		this.productId = productId;
 	}
+
 	
 }

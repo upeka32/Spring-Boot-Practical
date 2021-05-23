@@ -37,7 +37,6 @@ public class ProductController {
 	@DeleteMapping("/product/{id}")
 	public void deleteProduct(@PathVariable int id) {
 		productService.deleteProduct(id);
-		System.out.println("delete controller");
 	}
 	
 
