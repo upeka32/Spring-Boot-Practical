@@ -31,9 +31,9 @@ public class Product {
 	@Column(name= "launch_date") 
 	private Date date;
 	
-//	@ManyToOne
-//    @JoinColumn(name="product_category_id", nullable=false , columnDefinition = "int default 100")
-//    private ProductCategory productCategory;
+	@ManyToOne
+    @JoinColumn(name="product_category_id", nullable=false)
+    private ProductCategory productCategory;
 
 	
 	public int getProductId() {

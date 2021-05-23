@@ -1,7 +1,5 @@
 package com.sample.practical.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,13 +10,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.sample.practical.model.Product;
-import com.sample.practical.service.ProductService;
+import com.sample.practical.serviceImpl.ProductServiceImpl;
 
 @RestController
 public class ProductController {
 	
 	@Autowired
-	ProductService productService;
+	ProductServiceImpl productService;
 	
 	@PostMapping("/product")
 	public Product addStudent(@RequestBody Product product){
@@ -34,6 +32,12 @@ public class ProductController {
 	@PutMapping("/updateProduct")
 	public void updateProduct(@RequestBody Product product) {
 		productService.updateProduct(product);
+	}
+	
+	@DeleteMapping("/product/{id}")
+	public void deleteProduct(@PathVariable int id) {
+		productService.deleteProduct(id);
+		System.out.println("delete controller");
 	}
 	
 
